@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test1</title>
+    
+	<style>
+       body {
+				background-image: url('https://subtlepatterns.com/patterns/crissXcross.png');
+				margin: 0px;
+				padding: 0px;
+			}
+
+			#fakeHeight {
+				height: 6000px;
+				width: 1px;
+			}
+
+			#scrollPercentLabel {
+				font-family: Impact;
+				font-size: 50px;
+				color: #2B2B2B;
+				background: rgba(255, 255, 255, 0.5);
+				padding: 20px;
+				position: fixed;
+				top: 35vh;
+				left: 40vw;
+				box-shadow: 8px 8px 5px rgba(20, 20, 20, 1);
+				border-radius: 15px;
+			}
+    </style>
+    
+</head>
+<body>
+    <p id="fakeHeight"></p>
+    <p id="scrollPercentLabel">Scroll Percentage: <span>0</span>%</p>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="jquery-2.2.3.js"></script>
+	<script>
+
+
+$(document).ready(function() {
+
+$(window).scroll(function(e){
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
+    var scrollPercent = (scrollTop) / (docHeight - winHeight);
+    var scrollPercentRounded = Math.round(scrollPercent*100);
+
+    $('#scrollPercentLabel>span').html(scrollPercentRounded);
+    repositionLabel();
+});
+
+$(window).resize(function(){
+    repositionLabel();
+});
+
+function repositionLabel() {
+    $('#scrollPercentLabel').css({
+        position:'fixed',
+        left: ($(window).width() - $('#scrollPercentLabel').outerWidth()) / 2,
+        top: (($(window).height() - $('#scrollPercentLabel').outerHeight()) / 2) - $('#scrollPercentLabel').height()
+    });
+}
+
+repositionLabel();
+
+});
+
+
+	</script>
+</body>
+</html>

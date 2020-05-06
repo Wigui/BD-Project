@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test1</title>
+    
+	<style>
+        #info-box {
+        	padding: 50px;
+        	position: fixed;
+        	background: #fafafa;
+        	box-shadow: 3px 3px 3px silver;
+        	top: 20px;
+        	right: 20px;
+        }
+        #info-box::after {
+        	content: attr(data-scroll-direction);
+        }
+
+        pre { line-height: 250px; }
+    </style>
+    
+</head>
+<body>
+    <p>Because i’m sick of using tons of shit for this basic function.</p>
+    <p>This uses no timing functions, no jQuery and fits everywhere.</p>
+    <pre>
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    Scroll me.
+    </pre>
+    <div id="info-box" data-scroll-direction="no scrolling yet, go on!">Your last scolling direction was: </div>
+
+	<!-- Scripts -->
+	<script>
+		// Initial state
+        var scrollPos = 0;
+        // adding scroll event
+        window.addEventListener('scroll', function(){
+            // detects new state and compares it with the new one
+            if ((document.body.getBoundingClientRect()).top > scrollPos)
+	        	document.getElementById('info-box').setAttribute('data-scroll-direction', 'UP');
+	        else
+	        	document.getElementById('info-box').setAttribute('data-scroll-direction', 'DOWN');
+	        // saves the new position for iteration.
+	        scrollPos = (document.body.getBoundingClientRect()).top;
+        });
+	</script>
+</body>
+</html>
